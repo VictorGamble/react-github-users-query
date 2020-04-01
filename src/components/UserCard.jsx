@@ -3,11 +3,10 @@ import React from 'react';
 
 const UserCard = (props) =>{
 const userDetails  = props
-console.log('userDetails =>', userDetails.data.avatar_url)
+console.log('userDetails =>', userDetails.data)
     return(
         <div>
-          <img src={userDetails.data[0].avatar_url} alt=""/>
-        <p>{userDetails.data.login}</p>
+          null
     </div>
     )
 }

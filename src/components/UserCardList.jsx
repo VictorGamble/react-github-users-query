@@ -4,14 +4,14 @@ import UserCard from './UserCard';
 
 
 const UserCardList = props =>{
-    const user = props;
-    console.log("user", user)
+    const users = props;
+    console.log("users =>", users)
     return (
 
-    (user.length > 0) ? 
-    user.map(user=> <UserCard data={user} />) 
+    (users.length > 0) ? 
+    users.map(users=> <UserCard data={users} />) 
     : 
-    ""
+    "Please Input your name"
 )}
      
 
