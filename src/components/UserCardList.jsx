@@ -1,11 +1,20 @@
 import React from 'react';
+import UserCard from './UserCard';
+
+
 
 const UserCardList = props =>{
-    console.log("Props are", props);
-    return(
-        null
-    )
-}
+    const user = props;
+    console.log("user", user)
+    return (
+
+    (user.length > 0) ? 
+    user.map(user=> <UserCard data={user} />) 
+    : 
+    ""
+)}
+     
+
 
 
 export default UserCardList;

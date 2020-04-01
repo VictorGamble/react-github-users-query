@@ -46,8 +46,7 @@ try {
   render()
   {
   const {input} = this.state;
-  const {data} = this.state
-  console.log('Data is', data)
+    const { data } = this.state
     return (
     <div className="App">
       <form onSubmit={this.submitHandler}>
