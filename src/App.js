@@ -26,21 +26,15 @@ changeHandler = (event) =>{
 }
 
 submitHandler = async (event) => {
-event.preventDefault();
-const {input} = this.state;
-let url = `https://api.github.com/users/${input}`
-const userData = await this.dataLoad(url);
-try {
+  event.preventDefault();
+  const {input} = this.state;
+  let url = `https://api.github.com/users/${input}`
+  const userData = await this.dataLoad(url);
+
   this.setState({
     input: '',
     data: [...this.state.data, userData]
   })
-  
-} catch (error) {
-  console.error("error is ", error);
-  return error
-
-}
 }
   
   render()

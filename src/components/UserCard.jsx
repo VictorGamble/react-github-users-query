@@ -1,13 +1,12 @@
 import React from 'react';
 
 
-const UserCard = (props) =>{
-const userDetails  = props
-console.log('userDetails =>', userDetails.data)
+const UserCard = (props) => {
+    const { userDetails } = props;
     return(
-        <div>
-          null
-    </div>
+     <div>
+          <img src={userDetails.avatar_url} alt=""/>
+     </div>
     )
 }
 

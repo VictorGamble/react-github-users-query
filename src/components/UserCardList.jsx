@@ -4,15 +4,13 @@ import UserCard from './UserCard';
 
 
 const UserCardList = props =>{
-    const users = props;
-    console.log("users =>", users)
+    const {data} = props;
     return (
-
-    (users.length > 0) ? 
-    users.map(users=> <UserCard data={users} />) 
-    : 
-    "Please Input your name"
-)}
+        (data.length > 0) ? 
+            data.map(user => <UserCard userDetails={user} />) 
+        : 
+            <p>"Please Input your name"</p>
+    )}
      
 
 
