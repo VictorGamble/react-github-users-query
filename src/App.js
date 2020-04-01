@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import UserCardList from './components/UserCardList'
 import './App.css';
 
  class App extends Component {
@@ -27,10 +27,11 @@ changeHandler = (event) =>{
        input:event.target.value
     })
 }
-submitHandler = (event) => {
+submitHandler = async (event) => {
 event.preventDefault();
 const {input} = this.state;
-const {data} = this.state;
+let url = `https://api.github.com/users/${input}`
+const {data} = await this.dataLoad(url);
 this.setState({
   input: "",
   data: [...data, input ]
@@ -39,6 +40,7 @@ this.setState({
   
   render(){
   const {input} = this.state;
+  const {data} = this.state
     return (
     <div className="App">
       <form onSubmit={this.submitHandler}>
@@ -46,6 +48,7 @@ this.setState({
       <input type="text" value={input} onChange={this.changeHandler} placeholder="Please input text"></input>
       <button type="submit">Submit</button>
       </form>
+       <UserCardList data={data}  />
     </div>
   );
 }
