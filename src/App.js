@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+
 import './App.css';
 
-function App() {
-  return (
+ class App extends Component {
+  state={
+    input: "",
+    data: []
+  }
+
+dataLoad = async (url) => {
+try {
+let url = `https://api.github.com/users/[username]`
+const response = await fetch(url)
+const data = await response.json();
+console.log(data)
+return data;
+  
+} catch (error) {
+  console.error("Error is =>", error);
+  return error;
+}
+}
+
+changeHandler = (event) =>{
+    this.setState({
+       input:event.target.value
+    })
+}
+submitHandler = (event) => {
+event.preventDefault();
+const {input} = this.state;
+const {data} = this.state;
+this.setState({
+  input: "",
+  data: [...data, input ]
+})
+}
+  
+  render(){
+  const {input} = this.state;
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={this.submitHandler}>
+      <label>Input</label>
+      <input type="text" value={input} onChange={this.changeHandler} placeholder="Please input text"></input>
+      <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
-
+}
 export default App;
